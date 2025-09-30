@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TapBak Marketing Landing Page
 
-## Getting Started
+Modern, responsive marketing landing page for TapBak - the digital loyalty card platform for modern businesses.
 
-First, run the development server:
+## 🚀 Features
 
+- **Next.js 15** - Built with the latest Next.js App Router
+- **Tailwind CSS** - Beautiful, responsive design with custom color scheme
+- **Responsive Design** - Mobile-first approach, works seamlessly on all devices
+- **SEO Optimized** - Proper metadata and semantic HTML
+- **Fast Performance** - Optimized images and code splitting
+
+## 🎨 Design System
+
+### Colors
+- **Primary Blue**: `#2DB6FF`
+- **Secondary Purple**: `#7F20FF`
+- **Accent Purple**: `#9A3BFF`
+- **Background**: `#0F0A1F` (dark purple-black)
+- **Text White**: `#FFFFFF`
+- **Text Gray**: `#9CA3AF`
+- **Text Light Gray**: `#D1D5DB`
+
+### Gradients
+- Hero/Button gradient: `from-[#2DB6FF] to-[#9A3BFF]`
+- Card backgrounds with glassmorphism effect
+
+## 📦 Tech Stack
+
+- **Framework**: Next.js 15.5.4
+- **Styling**: Tailwind CSS 3.4.16
+- **Icons**: Lucide React
+- **Language**: TypeScript
+- **Package Manager**: npm
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd tapbak-landing
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+### Build for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 Page Sections
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Navigation Bar** - Sticky header with mobile menu
+2. **Hero Section** - Large headline with CTAs
+3. **Features** - 6 key features with icons
+4. **How It Works** - 3-step process
+5. **Pricing** - Two pricing tiers with comparison table
+6. **FAQ** - Accordion-style frequently asked questions
+7. **CTA Section** - Final conversion section
+8. **Footer** - Links and social media
 
-## Deploy on Vercel
+## 🔗 External Links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All CTAs link to:
+- **Sign Up**: `https://app.tapbak.co/signup`
+- **Login**: `https://app.tapbak.co/login`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 Deployment
+
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Import project to Vercel
+3. Configure domain: `tapbak.co`
+4. Deploy!
+
+The app domain `app.tapbak.co` should be configured separately for the main application.
+
+## 📝 License
+
+© 2025 TapBak. All rights reserved.
+
+## 🤝 Support
+
+For support, email contact@tapbak.co or visit our website.
