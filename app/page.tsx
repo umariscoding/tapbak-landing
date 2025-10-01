@@ -1,6 +1,7 @@
 ﻿"use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo, useRef } from "react";
 import Image from "next/image";
+import { CountUp } from "countup.js";
 import {
   CreditCard,
   Smartphone,
@@ -30,15 +31,163 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+
+// Contact Form Component - Memoized to prevent re-renders
+const ContactForm = memo(function ContactForm() {
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setSubmitError("");
+    setSubmitSuccess(false);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(
+        "https://api.tapbak.co/pass/contact-inquiry",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: contactEmail,
+            phone_number: contactPhone,
+            message: contactMessage,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setContactEmail("");
+        setContactPhone("");
+        setContactMessage("");
+        setSubmitSuccess(true);
+      } else {
+        setSubmitError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setSubmitError(
+        "Failed to submit. Please check your connection and try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div
+      className="rounded-2xl p-8 border-2 border-[#7F20FF]/20"
+      style={{
+        backgroundColor: "rgba(15, 10, 31, 0.6)",
+        backdropFilter: "blur(10px)",
+      }}
+    >
+      <form onSubmit={handleContactSubmit} className="space-y-6">
+        {submitSuccess && (
+          <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
+            <p className="text-green-400 text-sm font-medium">
+              ✓ Message sent successfully! We&apos;ll get back to you soon.
+            </p>
+          </div>
+        )}
+
+        {submitError && (
+          <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
+            <p className="text-red-400 text-sm font-medium">{submitError}</p>
+          </div>
+        )}
+
+        <div>
+          <label
+            htmlFor="contact-email"
+            className="block text-sm font-medium text-white mb-2"
+          >
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="contact-email"
+            required
+            value={contactEmail}
+            onChange={(e) => setContactEmail(e.target.value)}
+            disabled={isSubmitting}
+            className="w-full px-4 py-3 bg-[#0F0A1F] border border-[#7F20FF]/30 rounded-xl text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2DB6FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            placeholder="your.email@example.com"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="contact-phone"
+            className="block text-sm font-medium text-white mb-2"
+          >
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="contact-phone"
+            required
+            value={contactPhone}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              setContactPhone(value);
+            }}
+            disabled={isSubmitting}
+            inputMode="numeric"
+            pattern="[0-9]*"
+            className="w-full px-4 py-3 bg-[#0F0A1F] border border-[#7F20FF]/30 rounded-xl text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2DB6FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            placeholder="1234567890"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="contact-message"
+            className="block text-sm font-medium text-white mb-2"
+          >
+            Message
+          </label>
+          <textarea
+            id="contact-message"
+            required
+            rows={6}
+            value={contactMessage}
+            onChange={(e) => setContactMessage(e.target.value)}
+            disabled={isSubmitting}
+            className="w-full px-4 py-3 bg-[#0F0A1F] border border-[#7F20FF]/30 rounded-xl text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2DB6FF] transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+            placeholder="Tell us what you need help with..."
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full px-6 py-4 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+        >
+          {isSubmitting ? "Sending..." : "Send Message"}
+        </button>
+      </form>
+    </div>
+  );
+});
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [customers, setCustomers] = useState(0);
-  const [transactions, setTransactions] = useState(0);
-  const [earnings, setEarnings] = useState(0);
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Refs for CountUp.js
+  const customersRef = useRef<HTMLSpanElement>(null);
+  const transactionsRef = useRef<HTMLSpanElement>(null);
+  const earningsRef = useRef<HTMLSpanElement>(null);
 
   // Check if user is logged in via shared cookie
   useEffect(() => {
@@ -68,36 +217,68 @@ export default function Home() {
     }
   };
 
-  // Animated counter effect
+  // Animated counter effect using CountUp.js - triggers when stats section is in view
   useEffect(() => {
-    const duration = 2000; // 2 seconds
-    const targetCustomers = 342;
-    const targetTransactions = 1234;
-    const targetEarnings = 9870;
+    const statsSection = document.getElementById("analytics-stats");
+    if (!statsSection) return;
 
-    const startTime = Date.now();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // CountUp.js options for smooth animation
+            const options = {
+              duration: 2.5,
+              useEasing: true,
+              useGrouping: true,
+              separator: ",",
+              decimal: ".",
+            };
 
-    const animate = () => {
-      const now = Date.now();
-      const progress = Math.min((now - startTime) / duration, 1);
+            // Initialize CountUp for each stat
+            if (customersRef.current) {
+              const customersCounter = new CountUp(
+                customersRef.current,
+                342,
+                options
+              );
+              if (!customersCounter.error) {
+                customersCounter.start();
+              }
+            }
 
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            if (transactionsRef.current) {
+              const transactionsCounter = new CountUp(
+                transactionsRef.current,
+                1234,
+                options
+              );
+              if (!transactionsCounter.error) {
+                transactionsCounter.start();
+              }
+            }
 
-      setCustomers(Math.floor(easeOutQuart * targetCustomers));
-      setTransactions(Math.floor(easeOutQuart * targetTransactions));
-      setEarnings(Math.floor(easeOutQuart * targetEarnings));
+            if (earningsRef.current) {
+              const earningsCounter = new CountUp(
+                earningsRef.current,
+                9870,
+                options
+              );
+              if (!earningsCounter.error) {
+                earningsCounter.start();
+              }
+            }
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
+            observer.unobserve(statsSection);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
 
-    const timer = setTimeout(() => {
-      requestAnimationFrame(animate);
-    }, 500); // Delay start by 500ms
+    observer.observe(statsSection);
 
-    return () => clearTimeout(timer);
+    return () => observer.disconnect();
   }, []);
 
   const features = [
@@ -804,7 +985,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+          <div
+            id="analytics-stats"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12"
+          >
             {/* Stat Cards */}
             <div
               className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#7F20FF]/40 transition-all"
@@ -820,7 +1004,7 @@ export default function Home() {
                 <div>
                   <p className="text-[#9CA3AF] text-sm">Total Customers</p>
                   <p className="text-3xl font-bold text-white">
-                    {customers.toLocaleString()}
+                    <span ref={customersRef}>0</span>
                   </p>
                 </div>
               </div>
@@ -844,7 +1028,7 @@ export default function Home() {
                 <div>
                   <p className="text-[#9CA3AF] text-sm">Transactions</p>
                   <p className="text-3xl font-bold text-white">
-                    {transactions.toLocaleString()}
+                    <span ref={transactionsRef}>0</span>
                   </p>
                 </div>
               </div>
@@ -868,7 +1052,7 @@ export default function Home() {
                 <div>
                   <p className="text-[#9CA3AF] text-sm">Monthly Earnings</p>
                   <p className="text-3xl font-bold text-white">
-                    ${earnings.toLocaleString()}
+                    $<span ref={earningsRef}>0</span>
                   </p>
                 </div>
               </div>
@@ -1272,66 +1456,7 @@ export default function Home() {
               and we&apos;ll respond as soon as possible.
             </p>
           </div>
-          <div
-            className="rounded-2xl p-8 border-2 border-[#7F20FF]/20"
-            style={{
-              backgroundColor: "rgba(15, 10, 31, 0.6)",
-              backdropFilter: "blur(10px)",
-            }}
-          >
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="contact-email"
-                  className="block text-sm font-medium text-white mb-2"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="contact-email"
-                  required
-                  className="w-full px-4 py-3 bg-[#0F0A1F] border border-[#7F20FF]/30 rounded-xl text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2DB6FF] transition-colors"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="contact-phone"
-                  className="block text-sm font-medium text-white mb-2"
-                >
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="contact-phone"
-                  className="w-full px-4 py-3 bg-[#0F0A1F] border border-[#7F20FF]/30 rounded-xl text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2DB6FF] transition-colors"
-                  placeholder="+44 123 456 7890"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="contact-message"
-                  className="block text-sm font-medium text-white mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="contact-message"
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-[#0F0A1F] border border-[#7F20FF]/30 rounded-xl text-white placeholder-[#9CA3AF] focus:outline-none focus:border-[#2DB6FF] transition-colors resize-none"
-                  placeholder="Tell us what you need help with..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full px-6 py-4 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
+          <ContactForm />
         </div>
       </section>
 
