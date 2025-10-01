@@ -38,6 +38,27 @@ export default function Home() {
   const [earnings, setEarnings] = useState(0);
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check if user is logged in via shared cookie
+  useEffect(() => {
+    const checkAuth = () => {
+      // Read the tapbak_auth cookie set by app.tapbak.co
+      const cookies = document.cookie.split(";");
+      const authCookie = cookies.find((cookie) => {
+        const [name] = cookie.trim().split("=");
+        return name === "tapbak_auth";
+      });
+
+      if (authCookie) {
+        const [, value] = authCookie.trim().split("=");
+        setIsLoggedIn(value === "true");
+      } else {
+        setIsLoggedIn(false);
+      }
+    };
+    checkAuth();
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -294,18 +315,29 @@ export default function Home() {
               </button>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <a
-                href="https://app.tapbak.co/login"
-                className="px-5 py-2 text-[#D1D5DB] hover:text-white transition-colors"
-              >
-                Login
-              </a>
-              <a
-                href="https://app.tapbak.co/signup"
-                className="px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
-              >
-                Get Started
-              </a>
+              {isLoggedIn ? (
+                <a
+                  href="https://app.tapbak.co/dashboard"
+                  className="px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
+                >
+                  Go to Dashboard
+                </a>
+              ) : (
+                <>
+                  <a
+                    href="https://app.tapbak.co/login"
+                    className="px-5 py-2 text-[#D1D5DB] hover:text-white transition-colors"
+                  >
+                    Login
+                  </a>
+                  <a
+                    href="https://app.tapbak.co/signup"
+                    className="px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
+                  >
+                    Get Started
+                  </a>
+                </>
+              )}
             </div>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -341,18 +373,29 @@ export default function Home() {
                 FAQ
               </button>
               <div className="pt-4 space-y-3">
-                <a
-                  href="https://app.tapbak.co/login"
-                  className="block text-center px-5 py-2 border-2 border-[#7F20FF]/40 text-[#2DB6FF] font-semibold rounded-xl hover:bg-[#7F20FF]/10 transition-all"
-                >
-                  Login
-                </a>
-                <a
-                  href="https://app.tapbak.co/signup"
-                  className="block text-center px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
-                >
-                  Get Started
-                </a>
+                {isLoggedIn ? (
+                  <a
+                    href="https://app.tapbak.co/dashboard"
+                    className="block text-center px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
+                  >
+                    Go to Dashboard
+                  </a>
+                ) : (
+                  <>
+                    <a
+                      href="https://app.tapbak.co/login"
+                      className="block text-center px-5 py-2 border-2 border-[#7F20FF]/40 text-[#2DB6FF] font-semibold rounded-xl hover:bg-[#7F20FF]/10 transition-all"
+                    >
+                      Login
+                    </a>
+                    <a
+                      href="https://app.tapbak.co/signup"
+                      className="block text-center px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
+                    >
+                      Get Started
+                    </a>
+                  </>
+                )}
               </div>
             </div>
           )}
@@ -391,10 +434,14 @@ export default function Home() {
             </p>
             <div className="flex justify-center">
               <a
-                href="https://app.tapbak.co/signup"
+                href={
+                  isLoggedIn
+                    ? "https://app.tapbak.co/dashboard"
+                    : "https://app.tapbak.co/signup"
+                }
                 className="px-8 py-4 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg text-lg"
               >
-                Get Started
+                {isLoggedIn ? "Go to Dashboard" : "Get Started"}
               </a>
             </div>
           </div>
@@ -1050,10 +1097,14 @@ export default function Home() {
                 </ul>
               </div>
               <a
-                href="https://app.tapbak.co/signup"
+                href={
+                  isLoggedIn
+                    ? "https://app.tapbak.co/dashboard"
+                    : "https://app.tapbak.co/signup"
+                }
                 className="block text-center px-6 py-3 border-2 border-[#7F20FF]/40 text-[#2DB6FF] font-semibold rounded-xl hover:bg-[#7F20FF]/10 transition-all"
               >
-                Get Started
+                {isLoggedIn ? "Go to Dashboard" : "Get Started"}
               </a>
             </div>
 
@@ -1120,10 +1171,14 @@ export default function Home() {
                 </ul>
               </div>
               <a
-                href="https://app.tapbak.co/signup"
+                href={
+                  isLoggedIn
+                    ? "https://app.tapbak.co/dashboard"
+                    : "https://app.tapbak.co/signup"
+                }
                 className="block text-center px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
               >
-                Get Started
+                {isLoggedIn ? "Go to Dashboard" : "Get Started"}
               </a>
             </div>
           </div>
