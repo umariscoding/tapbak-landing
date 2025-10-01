@@ -317,7 +317,7 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-4">
               {isLoggedIn ? (
                 <a
-                  href="https://app.tapbak.co/dashboard"
+                  href="https://app.tapbak.co"
                   className="px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
                 >
                   Go to Dashboard
@@ -375,7 +375,7 @@ export default function Home() {
               <div className="pt-4 space-y-3">
                 {isLoggedIn ? (
                   <a
-                    href="https://app.tapbak.co/dashboard"
+                    href="https://app.tapbak.co"
                     className="block text-center px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
                   >
                     Go to Dashboard
@@ -436,7 +436,7 @@ export default function Home() {
               <a
                 href={
                   isLoggedIn
-                    ? "https://app.tapbak.co/dashboard"
+                    ? "https://app.tapbak.co"
                     : "https://app.tapbak.co/signup"
                 }
                 className="px-8 py-4 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg text-lg"
@@ -1099,7 +1099,7 @@ export default function Home() {
               <a
                 href={
                   isLoggedIn
-                    ? "https://app.tapbak.co/dashboard"
+                    ? "https://app.tapbak.co"
                     : "https://app.tapbak.co/signup"
                 }
                 className="block text-center px-6 py-3 border-2 border-[#7F20FF]/40 text-[#2DB6FF] font-semibold rounded-xl hover:bg-[#7F20FF]/10 transition-all"
@@ -1173,7 +1173,7 @@ export default function Home() {
               <a
                 href={
                   isLoggedIn
-                    ? "https://app.tapbak.co/dashboard"
+                    ? "https://app.tapbak.co"
                     : "https://app.tapbak.co/signup"
                 }
                 className="block text-center px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
