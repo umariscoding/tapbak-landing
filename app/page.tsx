@@ -455,7 +455,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0F0A1F] text-white">
+    <div className="min-h-screen bg-[#0F0A1F] text-white overflow-x-hidden">
       <nav className="sticky top-0 z-50 border-b border-[#7F20FF]/20 backdrop-blur-lg bg-[#0F0A1F]/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -522,13 +522,37 @@ export default function Home() {
             </div>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-white"
+              className="md:hidden text-white relative z-10"
+              aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <div className="relative w-6 h-6">
+                <Menu
+                  size={24}
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    mobileMenuOpen
+                      ? "rotate-90 opacity-0 scale-0"
+                      : "rotate-0 opacity-100 scale-100"
+                  }`}
+                />
+                <X
+                  size={24}
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    mobileMenuOpen
+                      ? "rotate-0 opacity-100 scale-100"
+                      : "-rotate-90 opacity-0 scale-0"
+                  }`}
+                />
+              </div>
             </button>
           </div>
-          {mobileMenuOpen && (
-            <div className="md:hidden py-4 space-y-4">
+          <div
+            className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+              mobileMenuOpen
+                ? "max-h-[600px] opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
+            <div className="py-4 space-y-4">
               <button
                 onClick={() => scrollToSection("features")}
                 className="block w-full text-left text-[#D1D5DB] hover:text-white transition-colors py-2"
@@ -579,16 +603,16 @@ export default function Home() {
                 )}
               </div>
             </div>
-          )}
+          </div>
         </div>
       </nav>
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-visible">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Extended Gradient Overlay for smooth transition */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0F0A1F] via-transparent to-transparent pointer-events-none"></div>
         <div className="absolute -bottom-32 left-0 right-0 h-96 bg-gradient-to-b from-transparent via-[#0F0A1F]/50 to-[#0F0A1F] pointer-events-none"></div>
 
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 -bottom-32 pointer-events-none">
+        <div className="absolute inset-0 -bottom-32 pointer-events-none overflow-hidden">
           {/* Gradient Orbs - positioned to extend into next section */}
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#2DB6FF]/10 rounded-full blur-3xl animate-float"></div>
           <div
