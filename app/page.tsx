@@ -547,9 +547,7 @@ export default function Home() {
           </div>
           <div
             className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-              mobileMenuOpen
-                ? "max-h-[600px] opacity-100"
-                : "max-h-0 opacity-0"
+              mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             <div className="py-4 space-y-4">
@@ -606,13 +604,12 @@ export default function Home() {
           </div>
         </div>
       </nav>
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Extended Gradient Overlay for smooth transition */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0F0A1F] via-transparent to-transparent pointer-events-none"></div>
-        <div className="absolute -bottom-32 left-0 right-0 h-96 bg-gradient-to-b from-transparent via-[#0F0A1F]/50 to-[#0F0A1F] pointer-events-none"></div>
-
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 -bottom-32 pointer-events-none overflow-hidden">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-visible pb-40">
+        {/* Animated Background Elements - extends beyond section */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ bottom: "-200px" }}
+        >
           {/* Gradient Orbs - positioned to extend into next section */}
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#2DB6FF]/10 rounded-full blur-3xl animate-float"></div>
           <div
@@ -656,11 +653,11 @@ export default function Home() {
       {/* Features Section */}
       <section
         id="features"
-        className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden -mt-16"
+        className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden -mt-40"
       >
-        {/* Smooth gradient continuation from hero - no top gradient needed as hero extends into this */}
+        {/* Smooth gradient continuation from hero - additional subtle orbs */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#9A3BFF]/8 rounded-full blur-3xl animate-pulse-slow"></div>
+          <div className="absolute -top-20 right-1/4 w-96 h-96 bg-[#9A3BFF]/8 rounded-full blur-3xl animate-pulse-slow"></div>
           <div
             className="absolute top-1/4 right-1/4 w-72 h-72 bg-[#9A3BFF]/5 rounded-full blur-3xl animate-pulse-slow"
             style={{ animationDelay: "0.5s" }}
