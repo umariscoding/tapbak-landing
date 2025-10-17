@@ -316,7 +316,7 @@ export default function Home() {
       icon: <Palette className="w-6 h-6 text-[#2DB6FF]" />,
       title: "Custom Branding",
       description:
-        "Upload your own logo, brand name, and custom stamp icons with the Growth Plan. Make it uniquely yours.",
+        "Upload your own logo, brand name, and custom stamp icons. Make it uniquely yours with full customization included.",
     },
   ];
 
@@ -360,12 +360,12 @@ export default function Home() {
     {
       question: "How does the free trial work?",
       answer:
-        "The Starter Plan includes a 7-day free trial with full access to all starter features. No credit card required to start. After the trial, the Starter Plan costs £50/month with up to 100 customers. You can upgrade to the Growth Plan (£100/month) anytime for unlimited customers and custom branding.",
+        "TapBak offers a 7-day free trial with full access to all features including unlimited customers, custom branding, and custom stamp icons. No credit card required to start. After the trial, the plan costs £50/month with all features included.",
     },
     {
       question: "Can I customize my loyalty cards?",
       answer:
-        "Yes! With the Growth Plan, you can fully customize your loyalty cards with your brand colors, custom logos, stamp icons, and messaging. The Starter Plan includes one standard template with TapBak branding.",
+        "Yes! You can fully customize your loyalty cards with your brand colors, custom logos, stamp icons, and messaging. All customization features are included in the £50/month plan.",
     },
     {
       question: "Which devices are supported?",
@@ -378,62 +378,12 @@ export default function Home() {
         "It's simple! Customers scan your unique QR code displayed at your store or shared digitally. The card is instantly added to their Apple or Google Wallet with one tap.",
     },
     {
-      question: "What's the difference between Starter and Growth plans?",
+      question: "What's included in the £50/month plan?",
       answer:
-        "The Starter Plan (£50/month) is perfect for small businesses with up to 100 customers and includes TapBak branding with standard templates. The Growth Plan (£100/month) offers unlimited customers, custom branding (your logo and name), custom stamp icons, and advanced customization - ideal for growing businesses that need a professional, white-label solution.",
+        "Everything! For just £50/month, you get unlimited customers, custom branding with your own logo and business name, custom stamp icons, Apple & Google Wallet integration, analytics dashboard, QR code for in-store display, customer management tools, and a 7-day free trial to get started.",
     },
   ];
 
-  const pricingFeatures = [
-    {
-      feature: "Loyalty Card Designs",
-      starter: { available: true, text: "1 standard template" },
-      growth: { available: true, text: "1 standard template" },
-    },
-    {
-      feature: "Apple & Google Wallet Integration",
-      starter: { available: true, text: "Included" },
-      growth: { available: true, text: "Included" },
-    },
-    {
-      feature: "Customer Stamp Tracking",
-      starter: { available: true, text: "Included" },
-      growth: { available: true, text: "Included" },
-    },
-    {
-      feature: "QR Code for In-Store Display",
-      starter: { available: true, text: "Included" },
-      growth: { available: true, text: "Included" },
-    },
-    {
-      feature: "Customer Capacity",
-      starter: { available: true, text: "Up to 100 customers" },
-      growth: { available: true, text: "Unlimited customers" },
-    },
-    {
-      feature: "Dashboard & Stats",
-      starter: {
-        available: true,
-        text: "Basic stats & Transactions Analytics",
-      },
-      growth: { available: true, text: "Basic stats & Transactions Analytics" },
-    },
-    {
-      feature: "Custom Branding",
-      starter: { available: false, text: "TapBak branding only" },
-      growth: { available: true, text: "Custom shop branding" },
-    },
-    {
-      feature: "Stamp Icon Customization",
-      starter: { available: false, text: "Standard icons only" },
-      growth: { available: true, text: "Custom stamp icons" },
-    },
-    {
-      feature: "7-Day Free Trial",
-      starter: { available: true, text: "Yes" },
-      growth: { available: false, text: "No" },
-    },
-  ];
 
   // Analytics Chart Data
   const customerGrowthData = [
@@ -1234,33 +1184,38 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              Choose Your{" "}
+              Simple{" "}
               <span className="bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] bg-clip-text text-transparent">
-                Plan
+                Pricing
               </span>
             </h2>
             <p className="text-lg text-[#9CA3AF] max-w-2xl mx-auto">
-              Unlock powerful features to grow your business
+              One plan with everything you need - £50/month with a 7-day free trial
             </p>
           </div>
 
           {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
-            {/* Starter Plan */}
+          <div className="flex justify-center mb-16">
+            {/* Complete Plan - £50/month with all features */}
             <div
-              className="rounded-2xl p-8 border-2 border-[#7F20FF]/20 hover:border-[#7F20FF]/40 transition-all"
+              className="rounded-2xl p-8 border-2 border-[#9A3BFF] hover:border-[#9A3BFF]/80 transition-all relative max-w-lg w-full"
               style={{
                 backgroundColor: "rgba(15, 10, 31, 0.6)",
                 backdropFilter: "blur(10px)",
               }}
             >
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide">
+                  All Features Included
+                </span>
+              </div>
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-1">
-                  <Star className="w-6 h-6 text-[#2DB6FF]" />
-                  <h3 className="text-2xl font-bold">Starter</h3>
+                  <Crown className="w-6 h-6 text-[#9A3BFF]" />
+                  <h3 className="text-2xl font-bold">Complete Plan</h3>
                 </div>
                 <p className="text-sm text-[#9CA3AF]">
-                  Starter Plan for Small Businesses
+                  Everything you need to grow your business
                 </p>
               </div>
               <div className="mb-6">
@@ -1279,99 +1234,43 @@ export default function Home() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">Up to 100 customers</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">
-                      1 standard loyalty card template
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">7-day free trial</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <X className="w-5 h-5 text-[#9A3BFF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#9CA3AF]">TapBak branding only</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <X className="w-5 h-5 text-[#9A3BFF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#9CA3AF]">Standard icons only</span>
-                  </li>
-                </ul>
-              </div>
-              <a
-                href={
-                  isLoggedIn
-                    ? "https://app.tapbak.co"
-                    : "https://app.tapbak.co/signup"
-                }
-                className="block text-center px-6 py-3 border-2 border-[#7F20FF]/40 text-[#2DB6FF] font-semibold rounded-xl hover:bg-[#7F20FF]/10 transition-all"
-              >
-                {isLoggedIn ? "Go to Dashboard" : "Get Started"}
-              </a>
-            </div>
-
-            {/* Growth Plan */}
-            <div
-              className="rounded-2xl p-8 border-2 border-[#9A3BFF] hover:border-[#9A3BFF]/80 transition-all relative"
-              style={{
-                backgroundColor: "rgba(15, 10, 31, 0.6)",
-                backdropFilter: "blur(10px)",
-              }}
-            >
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide">
-                  Most Popular
-                </span>
-              </div>
-              <div className="mb-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <Crown className="w-6 h-6 text-[#9A3BFF]" />
-                  <h3 className="text-2xl font-bold">Growth</h3>
-                </div>
-                <p className="text-sm text-[#9CA3AF]">Growth Enterprise Plan</p>
-              </div>
-              <div className="mb-6">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold">£100</span>
-                  <span className="text-[#9CA3AF]">/month</span>
-                </div>
-                <p className="text-sm text-[#9CA3AF] mt-2">
-                  No free trial • Full access from day one
-                </p>
-              </div>
-              <div className="mb-6">
-                <p className="text-sm font-semibold text-[#9CA3AF] mb-3">
-                  Key Features
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
                     <span className="text-[#D1D5DB]">Unlimited customers</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
                     <span className="text-[#D1D5DB]">
-                      Custom branding & icons
+                      Custom branding & logo upload
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
                     <span className="text-[#D1D5DB]">
-                      Advanced customization
+                      Custom stamp icons
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
                     <span className="text-[#D1D5DB]">
-                      All features from Starter Plan
+                      Apple & Google Wallet integration
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-5 h-5 mt-0.5 flex-shrink-0"></div>
-                    <span className="text-[#D1D5DB]"></span>
+                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
+                    <span className="text-[#D1D5DB]">
+                      Analytics & dashboard
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
+                    <span className="text-[#D1D5DB]">
+                      QR code for in-store display
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
+                    <span className="text-[#D1D5DB]">
+                      7-day free trial
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -1388,75 +1287,184 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Pricing Comparison Table */}
-          <div
-            className="rounded-2xl p-6 border-2 border-[#7F20FF]/20"
-            style={{
-              backgroundColor: "rgba(15, 10, 31, 0.6)",
-              backdropFilter: "blur(10px)",
-            }}
-          >
-            <h2 className="text-xl font-semibold text-white mb-6">
-              Plan Features Comparison
-            </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-[#7F20FF]/20">
-                    <th className="text-left py-4 px-4 font-semibold text-white">
-                      Feature
-                    </th>
-                    <th className="text-center py-4 px-4 font-semibold text-[#2DB6FF]">
-                      <div className="flex items-center justify-center gap-2">
-                        <Star className="w-4 h-4" />
-                        Starter Plan
-                      </div>
-                    </th>
-                    <th className="text-center py-4 px-4 font-semibold text-[#9A3BFF]">
-                      <div className="flex items-center justify-center gap-2">
-                        <Crown className="w-4 h-4" />
-                        Growth Plan
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {pricingFeatures.map((feature, index) => (
-                    <tr
-                      key={index}
-                      className="border-b border-[#7F20FF]/10 hover:bg-[#7F20FF]/5"
-                    >
-                      <td className="py-4 px-4 font-medium text-white">
-                        {feature.feature}
-                      </td>
-                      <td className="py-4 px-4 text-center">
-                        <div className="flex items-center justify-center gap-2">
-                          {feature.starter.available ? (
-                            <Check className="w-4 h-4 text-[#2DB6FF]" />
-                          ) : (
-                            <X className="w-4 h-4 text-[#9A3BFF]" />
-                          )}
-                          <span className="text-[#D1D5DB] text-sm">
-                            {feature.starter.text}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="py-4 px-4 text-center">
-                        <div className="flex items-center justify-center gap-2">
-                          {feature.growth.available ? (
-                            <Check className="w-4 h-4 text-[#2DB6FF]" />
-                          ) : (
-                            <X className="w-4 h-4 text-[#9A3BFF]" />
-                          )}
-                          <span className="text-[#D1D5DB] text-sm">
-                            {feature.growth.text}
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          {/* All Features List */}
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                What&apos;s Included
+              </h2>
+              <p className="text-[#9CA3AF]">
+                Every feature you need, all in one plan
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Feature Card 1 */}
+              <div
+                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#2DB6FF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#2DB6FF]/10 group"
+                style={{
+                  backgroundColor: "rgba(15, 10, 31, 0.6)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#2DB6FF]/20 to-[#7F20FF]/20 border border-[#2DB6FF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <Users className="w-6 h-6 text-[#2DB6FF]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white mb-2 text-lg">Unlimited Customers</h4>
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
+                      Scale without limits. Add as many customers as your business needs with no restrictions or extra charges.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Card 2 */}
+              <div
+                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#9A3BFF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#9A3BFF]/10 group"
+                style={{
+                  backgroundColor: "rgba(15, 10, 31, 0.6)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#9A3BFF]/20 to-[#7F20FF]/20 border border-[#9A3BFF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <Palette className="w-6 h-6 text-[#9A3BFF]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white mb-2 text-lg">Custom Branding</h4>
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
+                      Upload your logo and brand name. Create loyalty cards that perfectly match your business identity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Card 3 */}
+              <div
+                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#2DB6FF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#2DB6FF]/10 group"
+                style={{
+                  backgroundColor: "rgba(15, 10, 31, 0.6)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#2DB6FF]/20 to-[#7F20FF]/20 border border-[#2DB6FF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <Star className="w-6 h-6 text-[#2DB6FF]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white mb-2 text-lg">Custom Stamp Icons</h4>
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
+                      Design unique stamp icons that represent your brand. Make every stamp collection memorable.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Card 4 */}
+              <div
+                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#9A3BFF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#9A3BFF]/10 group"
+                style={{
+                  backgroundColor: "rgba(15, 10, 31, 0.6)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#9A3BFF]/20 to-[#7F20FF]/20 border border-[#9A3BFF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <Smartphone className="w-6 h-6 text-[#9A3BFF]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white mb-2 text-lg">Apple & Google Wallet</h4>
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
+                      Full integration with both Apple Wallet and Google Wallet. Reach all your customers seamlessly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Card 5 */}
+              <div
+                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#2DB6FF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#2DB6FF]/10 group"
+                style={{
+                  backgroundColor: "rgba(15, 10, 31, 0.6)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#2DB6FF]/20 to-[#7F20FF]/20 border border-[#2DB6FF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <BarChart3 className="w-6 h-6 text-[#2DB6FF]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white mb-2 text-lg">Analytics Dashboard</h4>
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
+                      Track customer behavior, transactions, and earnings with beautiful real-time analytics and insights.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Card 6 */}
+              <div
+                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#9A3BFF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#9A3BFF]/10 group"
+                style={{
+                  backgroundColor: "rgba(15, 10, 31, 0.6)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#9A3BFF]/20 to-[#7F20FF]/20 border border-[#9A3BFF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <QrCode className="w-6 h-6 text-[#9A3BFF]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white mb-2 text-lg">QR Code Display</h4>
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
+                      Easy-to-use QR code for in-store display. Customers scan and add your loyalty card instantly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Card 7 */}
+              <div
+                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#2DB6FF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#2DB6FF]/10 group"
+                style={{
+                  backgroundColor: "rgba(15, 10, 31, 0.6)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#2DB6FF]/20 to-[#7F20FF]/20 border border-[#2DB6FF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <CreditCard className="w-6 h-6 text-[#2DB6FF]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white mb-2 text-lg">Customer Management</h4>
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
+                      Track and manage all your customers in one place. See who's engaged and who needs attention.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Card 8 */}
+              <div
+                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#9A3BFF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#9A3BFF]/10 group"
+                style={{
+                  backgroundColor: "rgba(15, 10, 31, 0.6)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#9A3BFF]/20 to-[#7F20FF]/20 border border-[#9A3BFF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <CheckCircle className="w-6 h-6 text-[#9A3BFF]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white mb-2 text-lg">7-Day Free Trial</h4>
+                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
+                      Try all features risk-free for 7 days. No credit card required to start your trial.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1652,15 +1660,11 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-white mb-3">
                   3. Subscription Plans
                 </h3>
-                <p>TapBak offers two subscription tiers:</p>
+                <p>TapBak offers one comprehensive subscription plan:</p>
                 <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
                   <li>
-                    <strong>Starter Plan:</strong> £50/month with a 7-day free
-                    trial, supporting up to 100 customers
-                  </li>
-                  <li>
-                    <strong>Growth Plan:</strong> £100/month with unlimited
-                    customers and custom branding
+                    <strong>Complete Plan:</strong> £50/month with a 7-day free
+                    trial, including unlimited customers, custom branding, custom stamp icons, and all features
                   </li>
                 </ul>
                 <p className="mt-2">
@@ -1685,9 +1689,9 @@ export default function Home() {
                   5. Free Trial
                 </h3>
                 <p>
-                  The Starter Plan includes a 7-day free trial. You may cancel
+                  TapBak includes a 7-day free trial with full access to all features. You may cancel
                   anytime during the trial period without charge. After the
-                  trial, your subscription will automatically convert to a paid
+                  trial, your subscription will automatically convert to the £50/month paid
                   plan unless cancelled.
                 </p>
               </section>
