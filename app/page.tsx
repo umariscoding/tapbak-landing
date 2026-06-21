@@ -13,8 +13,6 @@ import {
   Menu,
   X,
   Star,
-  Crown,
-  Check,
   ChevronDown,
   TrendingUp,
   DollarSign,
@@ -358,14 +356,9 @@ export default function Home() {
         "TapBak is a digital loyalty card platform that helps businesses create and manage digital loyalty programs. Customers can add your loyalty cards to their Apple or Google Wallet, making it easy to track rewards and drive repeat business.",
     },
     {
-      question: "How does the free trial work?",
-      answer:
-        "TapBak offers a 7-day free trial with full access to all features including unlimited customers, custom branding, and custom stamp icons. No credit card required to start. After the trial, the plan costs £50/month with all features included.",
-    },
-    {
       question: "Can I customize my loyalty cards?",
       answer:
-        "Yes! You can fully customize your loyalty cards with your brand colors, custom logos, stamp icons, and messaging. All customization features are included in the £50/month plan.",
+        "Yes! You can fully customize your loyalty cards with your brand colors, custom logos, stamp icons, and messaging.",
     },
     {
       question: "Which devices are supported?",
@@ -378,9 +371,9 @@ export default function Home() {
         "It's simple! Customers scan your unique QR code displayed at your store or shared digitally. The card is instantly added to their Apple or Google Wallet with one tap.",
     },
     {
-      question: "What's included in the £50/month plan?",
+      question: "What's included with TapBak?",
       answer:
-        "Everything! For just £50/month, you get unlimited customers, custom branding with your own logo and business name, custom stamp icons, Apple & Google Wallet integration, analytics dashboard, QR code for in-store display, customer management tools, and a 7-day free trial to get started.",
+        "Everything! You get unlimited customers, custom branding with your own logo and business name, custom stamp icons, Apple & Google Wallet integration, analytics dashboard, QR code for in-store display, and customer management tools.",
     },
   ];
 
@@ -425,12 +418,6 @@ export default function Home() {
                 className="text-[#D1D5DB] hover:text-white transition-colors"
               >
                 Features
-              </button>
-              <button
-                onClick={() => scrollToSection("pricing")}
-                className="text-[#D1D5DB] hover:text-white transition-colors"
-              >
-                Pricing
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
@@ -506,12 +493,6 @@ export default function Home() {
                 className="block w-full text-left text-[#D1D5DB] hover:text-white transition-colors py-2"
               >
                 Features
-              </button>
-              <button
-                onClick={() => scrollToSection("pricing")}
-                className="block w-full text-left text-[#D1D5DB] hover:text-white transition-colors py-2"
-              >
-                Pricing
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
@@ -1179,122 +1160,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">
+      {/* Features Section */}
+      <section id="features-included" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              Simple{" "}
-              <span className="bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] bg-clip-text text-transparent">
-                Pricing
-              </span>
-            </h2>
-            <p className="text-lg text-[#9CA3AF] max-w-2xl mx-auto">
-              One plan with everything you need - £50/month with a 7-day free trial
-            </p>
-          </div>
-
-          {/* Pricing Cards */}
-          <div className="flex justify-center mb-16">
-            {/* Complete Plan - £50/month with all features */}
-            <div
-              className="rounded-2xl p-8 border-2 border-[#9A3BFF] hover:border-[#9A3BFF]/80 transition-all relative max-w-lg w-full"
-              style={{
-                backgroundColor: "rgba(15, 10, 31, 0.6)",
-                backdropFilter: "blur(10px)",
-              }}
-            >
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide">
-                  All Features Included
-                </span>
-              </div>
-              <div className="mb-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <Crown className="w-6 h-6 text-[#9A3BFF]" />
-                  <h3 className="text-2xl font-bold">Complete Plan</h3>
-                </div>
-                <p className="text-sm text-[#9CA3AF]">
-                  Everything you need to grow your business
-                </p>
-              </div>
-              <div className="mb-6">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold">£50</span>
-                  <span className="text-[#9CA3AF]">/month</span>
-                </div>
-                <p className="text-sm text-[#2DB6FF] mt-2">
-                  7-day free trial included
-                </p>
-              </div>
-              <div className="mb-6">
-                <p className="text-sm font-semibold text-[#9CA3AF] mb-3">
-                  Key Features
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">Unlimited customers</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">
-                      Custom branding & logo upload
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">
-                      Custom stamp icons
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">
-                      Apple & Google Wallet integration
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">
-                      Analytics & dashboard
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">
-                      QR code for in-store display
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#2DB6FF] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#D1D5DB]">
-                      7-day free trial
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <a
-                href={
-                  isLoggedIn
-                    ? "https://app.tapbak.co"
-                    : "https://app.tapbak.co/signup"
-                }
-                className="block text-center px-6 py-3 bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] text-white font-semibold rounded-xl hover:scale-105 transition-transform shadow-lg"
-              >
-                {isLoggedIn ? "Go to Dashboard" : "Get Started"}
-              </a>
-            </div>
-          </div>
-
           {/* All Features List */}
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                What&apos;s Included
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                What&apos;s{" "}
+                <span className="bg-gradient-to-r from-[#2DB6FF] to-[#9A3BFF] bg-clip-text text-transparent">
+                  Included
+                </span>
               </h2>
-              <p className="text-[#9CA3AF]">
-                Every feature you need, all in one plan
+              <p className="text-lg text-[#9CA3AF] max-w-2xl mx-auto">
+                Every feature you need to grow your business
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1440,27 +1319,6 @@ export default function Home() {
                     <h4 className="font-bold text-white mb-2 text-lg">Customer Management</h4>
                     <p className="text-sm text-[#9CA3AF] leading-relaxed">
                       Track and manage all your customers in one place. See who's engaged and who needs attention.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Feature Card 8 */}
-              <div
-                className="rounded-2xl p-6 border-2 border-[#7F20FF]/20 hover:border-[#9A3BFF]/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#9A3BFF]/10 group"
-                style={{
-                  backgroundColor: "rgba(15, 10, 31, 0.6)",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#9A3BFF]/20 to-[#7F20FF]/20 border border-[#9A3BFF]/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <CheckCircle className="w-6 h-6 text-[#9A3BFF]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white mb-2 text-lg">7-Day Free Trial</h4>
-                    <p className="text-sm text-[#9CA3AF] leading-relaxed">
-                      Try all features risk-free for 7 days. No credit card required to start your trial.
                     </p>
                   </div>
                 </div>
@@ -1658,47 +1516,7 @@ export default function Home() {
 
               <section>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  3. Subscription Plans
-                </h3>
-                <p>TapBak offers one comprehensive subscription plan:</p>
-                <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
-                  <li>
-                    <strong>Complete Plan:</strong> £50/month with a 7-day free
-                    trial, including unlimited customers, custom branding, custom stamp icons, and all features
-                  </li>
-                </ul>
-                <p className="mt-2">
-                  Subscriptions renew automatically unless cancelled before the
-                  renewal date.
-                </p>
-              </section>
-
-              <section>
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  4. Payment Terms
-                </h3>
-                <p>
-                  Payment is processed through Stripe. You agree to provide
-                  accurate billing information. Failure to pay may result in
-                  service suspension or termination.
-                </p>
-              </section>
-
-              <section>
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  5. Free Trial
-                </h3>
-                <p>
-                  TapBak includes a 7-day free trial with full access to all features. You may cancel
-                  anytime during the trial period without charge. After the
-                  trial, your subscription will automatically convert to the £50/month paid
-                  plan unless cancelled.
-                </p>
-              </section>
-
-              <section>
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  6. User Responsibilities
+                  3. User Responsibilities
                 </h3>
                 <p>You are responsible for:</p>
                 <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
@@ -1713,7 +1531,7 @@ export default function Home() {
 
               <section>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  7. Prohibited Activities
+                  4. Prohibited Activities
                 </h3>
                 <p>You may not:</p>
                 <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
@@ -1729,7 +1547,7 @@ export default function Home() {
 
               <section>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  8. Data Ownership
+                  5. Data Ownership
                 </h3>
                 <p>
                   You retain ownership of all customer data you input into the
@@ -1740,7 +1558,7 @@ export default function Home() {
 
               <section>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  9. Service Availability
+                  6. Service Availability
                 </h3>
                 <p>
                   While we strive for 99.9% uptime, we do not guarantee
@@ -1751,18 +1569,18 @@ export default function Home() {
 
               <section>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  10. Termination
+                  7. Termination
                 </h3>
                 <p>
-                  You may cancel your subscription at any time. We reserve the
+                  You may stop using the Service at any time. We reserve the
                   right to suspend or terminate accounts that violate these
-                  Terms or for non-payment.
+                  Terms.
                 </p>
               </section>
 
               <section>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  11. Limitation of Liability
+                  8. Limitation of Liability
                 </h3>
                 <p>
                   TapBak shall not be liable for any indirect, incidental,
@@ -1773,7 +1591,7 @@ export default function Home() {
 
               <section>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  12. Changes to Terms
+                  9. Changes to Terms
                 </h3>
                 <p>
                   We reserve the right to modify these Terms at any time.
@@ -1784,7 +1602,7 @@ export default function Home() {
 
               <section>
                 <h3 className="text-xl font-semibold text-white mb-3">
-                  13. Contact Information
+                  10. Contact Information
                 </h3>
                 <p>
                   For questions about these Terms, please contact us at
